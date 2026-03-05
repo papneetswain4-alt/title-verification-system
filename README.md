@@ -17,6 +17,7 @@ The system follows a microservices architecture:
 - **Dockerized**: Fully orchestrated local environment using Docker Compose.
 
 ## 🚀 Live Services
+- **Frontend UI**: [title-verification-system.netlify.app](https://title-verification-system.netlify.app)
 - **Backend API**: [backend-htpm.onrender.com](https://backend-htpm.onrender.com)
 - **NLP Engine**: [nlp-engine-exjd.onrender.com](https://nlp-engine-exjd.onrender.com)
 
