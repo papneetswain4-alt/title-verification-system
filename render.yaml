@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: nlp-engine
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python api/server.py
+    envVars:
+      - key: PORT
+        value: 5000
+    rootDir: nlp-engine
+
+  - type: web
+    name: backend
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: prgi-db
+          property: connectionString
+      - key: NLP_SERVICE_URL
+        fromService:
+          type: web
+          name: nlp-engine
+          property: host
+    rootDir: backend
+
+databases:
+  - name: prgi-db
+    databaseName: prgi_titles
+    user: postgres

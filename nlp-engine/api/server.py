@@ -53,6 +53,7 @@ def health():
     return jsonify({'status': 'OK', 'vector_count': engine.index.ntotal if engine.index else 0}), 200
 
 if __name__ == '__main__':
-    # Run the NLP microservice on port 5000
-    print("Starting Semantic Search NLP API on port 5000")
-    app.run(host='0.0.0.0', port=5000, debug=False)
+    # Run the NLP microservice on port 5000 or Render-assigned port
+    port = int(os.environ.get('PORT', 5000))
+    print(f"Starting Semantic Search NLP API on port {port}")
+    app.run(host='0.0.0.0', port=port, debug=False)
