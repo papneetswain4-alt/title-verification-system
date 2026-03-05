@@ -14,7 +14,6 @@ services:
     env: docker
     dockerContext: .
     dockerfilePath: docker/Dockerfile.backend
-    startCommand: npm run db:setup && npm start
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -26,5 +25,4 @@ services:
 
 databases:
   - name: prgi-db
-    databaseName: prgi_titles
-    user: postgres
+    plan: free # Explicitly setting plan to free to avoid any ambiguity
