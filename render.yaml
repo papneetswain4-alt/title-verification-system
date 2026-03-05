@@ -1,10 +1,9 @@
-services:
   - type: web
     name: nlp-engine
     env: docker
     plan: free
     dockerContext: .
-    dockerfilePath: nlp-engine/Dockerfile
+    dockerfilePath: Dockerfile
     envVars:
       - key: PORT
         value: 5000
@@ -15,7 +14,7 @@ services:
     env: docker
     plan: free
     dockerContext: .
-    dockerfilePath: backend/Dockerfile
+    dockerfilePath: Dockerfile
     envVars:
       - key: DATABASE_URL
         fromDatabase:
