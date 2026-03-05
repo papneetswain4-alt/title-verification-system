@@ -1,0 +1,15 @@
+{
+    "disallowed": [
+        "Police",
+        "Crime",
+        "Corruption",
+        "CBI",
+        "CID",
+        "Army",
+        "Government",
+        "Official",
+        "Secret",
+        "Intelligence",
+        "Investigation"
+    ]
+}

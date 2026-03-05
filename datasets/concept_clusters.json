@@ -1,0 +1,43 @@
+[
+    {
+        "concept": "Morning Publication",
+        "keywords": [
+            "Morning",
+            "Sunrise",
+            "Dawn",
+            "Prabhat",
+            "Uday"
+        ],
+        "examples": [
+            "Morning Herald",
+            "Sunrise Chronicle",
+            "Dawn Dispatch"
+        ]
+    },
+    {
+        "concept": "Evening Publication",
+        "keywords": [
+            "Evening",
+            "Sandhya",
+            "Sunset",
+            "Dusk"
+        ],
+        "examples": [
+            "Daily Evening",
+            "Pratidin Sandhya"
+        ]
+    },
+    {
+        "concept": "National/India",
+        "keywords": [
+            "India",
+            "Hindustan",
+            "Bharat",
+            "National"
+        ],
+        "examples": [
+            "The Times of India",
+            "Hindustan Times"
+        ]
+    }
+]
