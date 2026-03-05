@@ -31,10 +31,34 @@ The system follows a microservices architecture:
 ### Manual Setup (Development)
 Each service has its own `README.md` inside its folder for specific development instructions.
 
-## ☁️ Cloud Deployment
-The project is configured for:
-- **Render**: Blueprint available in `render.yaml` for Backend, AI Engine, and DB.
-- **Netlify**: Configured in `frontend/netlify.toml` for the Frontend.
+## 📝 Problem Statement: PRGI Title Verification
+**The Challenge**: Press Registrar General of India (PRGI) manages ~160,000 titles. New submissions must be unique, non-confusing, and compliant with strict regulatory guidelines.
+**The Solution**: A system that automatically rejects titles based on:
+- **Similarity**: Phonetic (Soundex/Metaphone) and string matching (Levenshtein).
+- **Guidelines**: Disallowed words (e.g., Police, Army), periodicity additions, and conceptual themes (e.g., Morning Herald vs Sunrise Chronicle).
+- **Combinations**: Prevents mixing existing titles to form new ones.
+- **Languages**: Rejects titles with similar meanings in different languages.
+
+## 📁 Project Structure
+```text
+title-verification-system/
+├── backend/                # Node.js + Express API
+│   ├── src/                # Business logic, routes, and services
+│   ├── database/           # SQL schema and seed data
+│   └── Dockerfile          # Production Docker config
+├── frontend/               # React (Vite) Frontend
+│   ├── src/                # UI components and assets
+│   ├── netlify.toml        # Netlify cloud config
+│   └── Dockerfile          # Frontend Docker config
+├── nlp-engine/             # Python AI Service
+│   ├── api/                # Flask API endpoints
+│   ├── model/              # NLP model loading and logic
+│   └── Dockerfile          # Python/FAISS Docker config
+├── docker/                 # Local orchestration
+│   └── docker-compose.yml  # Multi-container setup
+├── datasets/               # Reference datasets (JSON/CSV)
+└── render.yaml             # Render Blueprint for cloud deployment
+```
 
 ---
 **Developed for the Title Identity Compliance Hackathon.**
