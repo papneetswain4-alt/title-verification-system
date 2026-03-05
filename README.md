@@ -1,25 +1,39 @@
-# Title Similarity & Compliance Validation System
+# Title Verification System 🚀
 
-An intelligent system to verify new publication titles against 160,000 existing titles for phonetic and semantic similarity, while enforcing regulatory rules.
+A high-performance, AI-powered system designed to verify publication titles against a large database. It ensures uniqueness, semantic compliance, and similarity checks using phonetic and NLP algorithms.
 
-## Core Features
-1. **Similarity Detection**: Implements Levenshtein, Jaro-Winkler, and Phonetic (Soundex/Metaphone) matching algorithms.
-2. **Prefix & Suffix Handling**: Strips and handles common word prefixes before making core similarity checks.
-3. **Rule-Based Compliance Engine**: Maintains blacklists for terms like "Police, Crime, Corruption", and prevents periodicity modifications (e.g., adding "Daily" or "Weekly").
-4. **Semantic Similarity (NLP Vector Store)**: Uses `sentence-transformers` and FAISS vector database to detect conceptually identical titles (e.g. "Morning Herald" vs "Sunrise Chronicle").
-5. **Validation Pipeline Orchestration**: Microservices funnel and generate a calculated Probability approval percentage for each title.
+## 🏗 Architecture
+The system follows a microservices architecture:
+- **Frontend**: React + Vite + Lucide Icons (Responsive UI)
+- **Backend API**: Node.js + Express + PostgreSQL (Title Management & Business Logic)
+- **NLP Engine**: Python + Flask + Sentence Transformers + FAISS (AI Semantic Search)
+- **Database**: PostgreSQL (Managed)
 
-## Tech Stack
-- Frontend: React (Vite)
-- Backend: Node.js + Express
-- Database: PostgreSQL (or MySQL)
-- NLP Engine: Python (Sentence Transformers + FAISS)
+## ✨ key Features
+- **Phonetic Matching**: Detects titles that sound identical to existing ones.
+- **AI Semantic Search**: Finds conceptually similar titles using vector embeddings.
+- **Automated Validation**: Instant probability scoring for title approval.
+- **Cloud Ready**: Configured for automated deployment via Render and Netlify.
+- **Dockerized**: Fully orchestrated local environment using Docker Compose.
 
-## Directory Structure
-- `frontend/`: React UI for submissions
-- `backend/`: Node.js + Express core API layer and validation orchestrator
-- `nlp-engine/`: Python-based semantic similarity checking service
-- `database/`: Database schema and seed scripts
-- `datasets/`: Initial datasets for testing
-- `docker/`: Docker containerization configs
-- `docs/`: System documentation
+## 🚀 Live Services
+- **Backend API**: [backend-htpm.onrender.com](https://backend-htpm.onrender.com)
+- **NLP Engine**: [nlp-engine-exjd.onrender.com](https://nlp-engine-exjd.onrender.com)
+
+## 🛠 Local Setup
+
+### Using Docker (Recommended)
+1. Clone the repository.
+2. Run `docker-compose -f docker/docker-compose.yml up --build`.
+3. Open `http://localhost:5173` in your browser.
+
+### Manual Setup (Development)
+Each service has its own `README.md` inside its folder for specific development instructions.
+
+## ☁️ Cloud Deployment
+The project is configured for:
+- **Render**: Blueprint available in `render.yaml` for Backend, AI Engine, and DB.
+- **Netlify**: Configured in `frontend/netlify.toml` for the Frontend.
+
+---
+**Developed for the Title Identity Compliance Hackathon.**
