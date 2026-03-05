@@ -2,6 +2,7 @@ services:
   - type: web
     name: nlp-engine
     env: docker
+    plan: free
     dockerContext: .
     dockerfilePath: docker/Dockerfile.nlp
     envVars:
@@ -12,6 +13,7 @@ services:
   - type: web
     name: backend
     env: docker
+    plan: free
     dockerContext: .
     dockerfilePath: docker/Dockerfile.backend
     envVars:
@@ -25,4 +27,4 @@ services:
 
 databases:
   - name: prgi-db
-    plan: free # Explicitly setting plan to free to avoid any ambiguity
+    plan: free
