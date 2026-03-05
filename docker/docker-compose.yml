@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: prgi_titles
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ../database/schema.sql:/docker-entrypoint-initdb.d/1_schema.sql
+      - ../database/indexes.sql:/docker-entrypoint-initdb.d/2_indexes.sql
+
+  nlp-engine:
+    build: 
+      context: ../nlp-engine
+      dockerfile: ../docker/Dockerfile.nlp
+    ports:
+      - "5000:5000"
+    volumes:
+      - nlp_vector_store:/app/vector_store
+
+  backend:
+    build:
+      context: ../backend
+      dockerfile: ../docker/Dockerfile.backend
+    environment:
+      - PORT=3000
+      - DB_HOST=db
+      - DB_USER=postgres
+      - DB_PASSWORD=password
+      - DB_NAME=prgi_titles
+      - NLP_SERVICE_URL=http://nlp-engine:5000/api/v1/semantic
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - nlp-engine
+
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: ../docker/Dockerfile.frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+  nlp_vector_store:
